@@ -6,18 +6,16 @@ from datetime import date
 from rich import print
 from rich.console import Console
 from rich.markdown import Markdown
-from typing import Dict, Any
+from typing import Dict, Any, List
 from openai._exceptions import APIError
 
-
 console = Console()
-
 
 # Step 2: Initialize OpenAI client
 client = OpenAI(api_key=openai_key)
 
 # Step 3: Define function schema
-function_def = {
+function_def: List[Dict[str, Any]] = [{
     "name": "get_weather",
     "description": "Get the weather forecast for a given city and day",
     "parameters": {
@@ -28,10 +26,10 @@ function_def = {
         },
         "required": ["city", "date"]
     }
-}
+}]
 
 # Step 4: Create user message
-messages = [
+messages: List[Dict[str, str]] = [
     {"role": "user", "content": "What's the weather in Lahore today?"}
 ]
 
@@ -40,33 +38,35 @@ try:
     response = client.chat.completions.create(
         model="gpt-4.1-nano",
         messages=messages,
-        functions=[function_def],
+        functions=function_def,  
         function_call="auto"
     )
 
-# Step 6: Check if model triggered function call
+    # Step 6: Check if model triggered function call
     response_msg = response.choices[0].message
 
     if response_msg.function_call:
         print("\nModel triggered function call")
-    
+
         func_name = response_msg.function_call.name
         args_json = response_msg.function_call.arguments
-        args = json.loads(args_json)  # Convert JSON string to dict
+        args = (
+            args_json if isinstance(args_json, dict)
+            else json.loads(args_json)
+        )
 
         print("Function Name:", func_name)
         print("Arguments:", args)
 
         # Step 7: Simulate weather API call
-        def call_fake_weather_api(city:str, date:str) -> Dict[str, Any]:
+        def call_fake_weather_api(city: str, date: str) -> Dict[str, Any]:
             return {
                 "location": city,
                 "date": date,
                 "forecast": "Sunny with a high of 27°C and a low of 18°C"
             }
 
-        # Call fake weather API with extracted arguments
-        result = call_fake_weather_api(**args)
+        result: Dict[str, Any] = call_fake_weather_api(**args)
 
         # Step 8: Append function result to messages
         messages.append({
@@ -81,8 +81,8 @@ try:
             messages=messages
         )
 
-        final_reply = follow_up.choices[0].message.content
-        console.print("\nAssistant Final Answer :\n", Markdown(final_reply))
+        final_reply: str = follow_up.choices[0].message.content
+        console.print("\nAssistant Final Answer:\n", Markdown(final_reply))
 
     else:
         print("\nNo function call. Model answered directly:")
