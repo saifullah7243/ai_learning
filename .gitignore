@@ -1,14 +1,30 @@
-# .gitignore
-
-# Python virtual environment
+# Python virtual environments (any location)
+**/.venv/
+**/aienv/
 venv/
 
 # Environment variables
 .env
 
 # Python cache files
-__pycache__/
+**/__pycache__/
 *.pyc
+*.pyo
 
-# VS Code settings
+# VS Code and JetBrains settings
 .vscode/
+.idea/
+
+# Files specific to topic_1.4 folder
+ai_agent_book/topic_1.4/pyproject.toml
+ai_agent_book/topic_1.4/uv.lock
+ai_agent_book/topic_1.4/.python-version
+ai_agent_book/topic_1.4/README.md
+ai_agent_book/topic_1.4/requirements.txt
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
