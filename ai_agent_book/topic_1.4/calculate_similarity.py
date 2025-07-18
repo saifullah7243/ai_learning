@@ -48,8 +48,3 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# Optional: Manual normalization for safety (if unsure embeddings are normalized)
-# query_norm = query_embedding / np.linalg.norm(query_embedding)
-# corpus_norms = [emb / np.linalg.norm(emb) for emb in corpus_embeddings]
-# dot_product_normalized = np.dot(query_norm, corpus_norms[0])
-# print(f"\nDot product (manually normalized) with first sentence: {dot_product_normalized:.4f}"

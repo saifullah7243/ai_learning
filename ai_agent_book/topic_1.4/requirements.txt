@@ -1,0 +1,11 @@
+sentence-transformers
+torch
+openai
+python-dotenv
+requests
+numpy
+scikit-learn
+faiss-cpu
+ipykernel
+rich
+markdown

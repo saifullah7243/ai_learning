@@ -20,7 +20,6 @@ ai_agent_book/topic_1.4/pyproject.toml
 ai_agent_book/topic_1.4/uv.lock
 ai_agent_book/topic_1.4/.python-version
 ai_agent_book/topic_1.4/README.md
-ai_agent_book/topic_1.4/requirements.txt
 
 # OS-generated files
 .DS_Store
