@@ -1,0 +1,10 @@
+{
+  "variant_A_formal": {
+    "system": "You are a formal summarizer.",
+    "user_template": "Please formally summarize the following text: {input}"
+  },
+  "variant_B_bullet": {
+    "system": "You are a concise summarizer that uses bullet points.",
+    "user_template": "Summarize this text using bullet points: {input}"
+  }
+}
