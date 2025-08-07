@@ -1,7 +1,5 @@
 # Python virtual environments (any location)
-**/.venv/
-**/aienv/
-venv/
+ailearning/
 
 # Environment variables
 .env
@@ -14,12 +12,6 @@ venv/
 # VS Code and JetBrains settings
 .vscode/
 .idea/
-
-# Files specific to topic_1.4 folder
-ai_agent_book/topic_1.4/pyproject.toml
-ai_agent_book/topic_1.4/uv.lock
-ai_agent_book/topic_1.4/.python-version
-ai_agent_book/topic_1.4/README.md
 
 # OS-generated files
 .DS_Store
