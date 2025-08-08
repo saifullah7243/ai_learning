@@ -12,6 +12,7 @@ try:
     user = UserProfile(
         user_name="john_doe", 
         user_id=123,
+        email="123@gmail.com",
         interests=["AI", "Python", "hiking"]
     )
 

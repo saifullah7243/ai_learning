@@ -1,4 +1,4 @@
-from langchain_core.output_parser import BaseOutputParser
+from langchain_core.output_parsers import BaseOutputParser
 from typing import Dict, Any
 
 class KeyValueParser(BaseOutputParser[Dict[str, Any]]):

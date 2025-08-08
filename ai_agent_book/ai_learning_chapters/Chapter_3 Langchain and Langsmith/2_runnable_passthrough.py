@@ -51,4 +51,4 @@ full_synthesis_chain = combined_chain | final_prompt | llm | str_output
 topic_input = {"topic": "CRISPR gene editing"}
 result = full_synthesis_chain.invoke(topic_input)
 
-print("🔍 Final Synthesis:\n", result)
+print(" Final Synthesis:\n", result)
